@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu & Accès - 07 Octobre</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Cormorant Garamond', 'Didot', 'Bodoni MT', 'Cinzel', serif, sans-serif;
+      background-color: #f5f0eb; /* Beige doux */
+      color: #1a1a1a; /* Noir doux */
+      padding: 40px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #faf8f5; /* Blanc cassé */
+      max-width: 650px;
+      width: 100%;
+      padding: 40px 25px;
+      border-radius: 4px;
+      border: 1px solid #e2dcd5;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      text-align: center;
+    }
+
+    .event-date {
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #777777;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      color: #1a1a1a;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: #1a1a1a;
+      margin: 20px 0 15px;
+      border-bottom: 1px solid #e2dcd5;
+      padding-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #555555;
+      margin-bottom: 20px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* Cartes de Paiement */
+    .payment-box {
+      background-color: #ffffff;
+      border: 1px solid #e0d8d0;
+      border-left: 3px solid #1a1a1a;
+      padding: 14px;
+      margin: 12px 0;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+    }
+
+    .payment-box span {
+      display: block;
+      font-size: 0.8rem;
+      color: #777777;
+      margin-top: 4px;
+    }
+
+    /* Boutons Minimalistes */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 2px;
+      border: 1px solid #1a1a1a;
+      background-color: #1a1a1a;
+      color: #faf8f5;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background-color: #333333;
+      border-color: #333333;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #1a1a1a;
+    }
+
+    .btn-secondary:hover {
+      background-color: #1a1a1a;
+      color: #faf8f5;
+    }
+
+    /* Input */
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d8d0c5;
+      background-color: #ffffff;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 10px 0;
+      outline: none;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+    }
+
+    /* Grille Menu & Boissons */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 580px) {
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      background: #1a1a1a;
+      color: #faf8f5;
+      margin-bottom: 8px;
+    }
+
+    .menu-card {
+      background: #ffffff;
+      border: 1px solid #e2dcd5;
+      padding: 15px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .menu-card:hover {
+      border-color: #1a1a1a;
+    }
+
+    .menu-card label {
+      cursor: pointer;
+      display: block;
+    }
+
+    .menu-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .menu-desc {
+      font-size: 0.82rem;
+      color: #666666;
+      line-height: 1.4;
+    }
+
+    .drink-section {
+      background: #ffffff;
+      border: 1px solid #e2dcd5;
+      padding: 15px;
+    }
+
+    .drink-category {
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 10px 0 5px;
+      color: #1a1a1a;
+      border-bottom: 1px solid #f0ebd9;
+      padding-bottom: 3px;
+    }
+
+    .drink-item {
+      font-size: 0.82rem;
+      color: #555555;
+      padding: 3px 0;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 2px;
+      border: 1px solid #e0d8d0;
+      margin: 15px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e8e2d9;
+      margin: 25px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="event-date">07 Octobre </div>
+
+    <!-- ÉTAPE 1 : PAIEMENT & CODE -->
+    <div id="step-paiement">
+      <h2>Confirmation après dépôt validé</h2>
+      <p>Valide ta reservation par la formule de ton choix 😊😉: </p>
+      <p>- Par personne : 15.000 FCFA</p>
+      <p>- Par couple : 28.000 FCFA</p>
+      <div class="payment-box">
+        <strong>Airtel Money :</strong> +241 77985598
+        <span>Titulaire : ANGUE Charlena.</span>
+      </div>
+
+      <div class="payment-box">
+        <strong>Moov Money :</strong> +241 62038893
+        <span>Titulaire : ALLOGHO Glenn.</span>
+      </div>
+
+      <a href="https://wa.me/24177985598 ?text=Bonjour,%20voici%20mon%20re%C3%A7u%20de%20paiement." target="_blank" class="btn btn-secondary">
+        Transmettre le reçu sur WhatsApp
+      </a>
+
+      <hr>
+
+      <h3>Code d'Accès</h3>
+      <p>Entrez le code reçu pour afficher la suite :</p>
+      <input type="text" id="code-input" placeholder="ENTREZ VOTRE CODE">
+      <button onclick="validerCode()" class="btn">Valider</button>
+    </div>
+
+
+    <!-- ÉTAPE 2 : ACCÈS, ITINÉRAIRE & SELECTION MENU -->
+    <div id="step-secret" class="hidden">
+      <h2>Accès Confirmé</h2>
+      
+      <h3>Itinéraire & Localisation</h3>
+      <video controls>
+        <source src="localisation.mp4" type="video/mp4">
+      </video>
+
+      <hr>
+
+      <form id="menu-form" onsubmit="envoyerMenuWhatsApp(event)">
+        <h3>Sélection du Menu & Boissons</h3>
+        <p>Choisissez votre formule repas :</p>
+
+        <div class="menu-grid">
+          
+          <!-- COLONNE NOURRITURE -->
+          <div>
+            <span class="badge-tag">Forfait Solo</span>
+
+            <div class="menu-card">
+              <label>
+                <input type="radio" name="plat" value="Mini Chill (Solo)" required>
+                <div class="menu-title">Mini Chill</div>
+                <div class="menu-desc">2 mini brochettes (poulet), 4 wings grillés, frites ou alloco, sauce piquante ou mayo maison.</div>
+              </label>
+            </div>
+
+            <div class="menu-card">
+              <label>
+                <input type="radio" name="plat" value="Rooftop Deluxe (Solo)">
+                <div class="menu-title">Rooftop Deluxe</div>
+                <div class="menu-desc">1 brochette bœuf, 2 brochettes poulet, 1 merguez, alloco ou pommes sautées, sauces (piquante, ail).</div>
+              </label>
+            </div>
+
+            <span class="badge-tag" style="margin-top: 10px;">Forfait Couple</span>
+
+            <div class="menu-card">
+              <label>
+                <input type="radio" name="plat" value="Fiesta BBQ (Couple)">
+                <div class="menu-title">Fiesta BBQ</div>
+                <div class="menu-desc">1 brochette de viande, 4 wings, 2 merguez grillées, 1 brochette crevette, alloco + salade fraîcheur.</div>
+              </label>
+            </div>
+
+            <div class="menu-card">
+              <label>
+                <input type="radio" name="plat" value="Océan & Braise (Couple)">
+                <div class="menu-title">Océan & Braise</div>
+                <div class="menu-desc">Émincé de bœuf, 1 brochette crevette, 5 wings miel-gingembre, saucisse de Toulouse, frites croustillantes + salade.</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- COLONNE BOISSONS -->
+          <div>
+            <span class="badge-tag">Drinks</span>
+            
+            <div class="drink-section">
+              <div class="drink-category">Sunset</div>
+              <div class="drink-item">• Passion + Mangue + Rhum blanc</div>
+              <div class="drink-item">• Pêche + Jus de passion + Rhum ambré</div>
+              <div class="drink-item">• Orange + Pamplemousse + Vodka</div>
+
+              <div class="drink-category" style="margin-top: 15px;">Shoots / Tequila</div>
+              <div class="drink-item">• Tequila</div>
+              <div class="drink-item">• Vodka</div>
+              <div class="drink-item">• Rhum blanc / ambré</div>
+              <div class="drink-item">• Casamigos</div>
+              <div class="drink-item">• Don Julio</div>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn">Valider mon Choix sur WhatsApp</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    const CODE_SECRET = "Mme ens"; 
+    const MON_NUMERO_WA = "24177985598"; // Votre numéro WhatsApp
+
+    function validerCode() {
+      const codeSaisi = document.getElementById('code-input').value.trim();
+      if (codeSaisi === CODE_SECRET) {
+        document.getElementById('step-paiement').classList.add('hidden');
+        document.getElementById('step-secret').classList.remove('hidden');
+      } else {
+        alert("Code incorrect. Veuillez transmettre votre reçu pour l'obtenir.");
+      }
+    }
+
+    function envoyerMenuWhatsApp(event) {
+      event.preventDefault();
+      const choixPlat = document.querySelector('input[name="plat"]:checked').value;
+      const message = encodeURIComponent(`Bonjour, voici mon choix pour l'événement du 07 Octobre : ${choixPlat}`);
+      window.open(`https://wa.me/${MON_NUMERO_WA}?text=${message}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
